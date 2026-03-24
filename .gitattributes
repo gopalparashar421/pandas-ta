@@ -1,2 +1,6 @@
-# Auto detect text files and perform LF normalization
+# Ensure shell scripts always use LF line endings in the working tree (not CRLF).
+# This prevents "exec: no such file or directory" errors in Docker on Windows.
+*.sh text eol=lf
+
+# General: auto-normalize text files on commit, respect per-rule overrides
 * text=auto
