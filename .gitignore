@@ -208,3 +208,4 @@ __marimo__/
 /.github/agents
 /.github/reference
 /.github/skills
+.python-version
