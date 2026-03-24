@@ -12,6 +12,7 @@ dependencies = [
     "python-dateutil==2.9.0.post0",
     "pytz==2024.2",
     "six==1.17.0",
+    "tqdm",
     "tzdata==2024.2"
 ]
 requires-python = ">= 3.11"
