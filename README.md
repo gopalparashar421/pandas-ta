@@ -2,7 +2,7 @@ Pandas TA - A Technical Analysis Library in Python 3
 =================
 
 [![license](https://img.shields.io/github/license/gopalparashar421/pandas_ta)](#license)
-[![Python Version](https://img.shields.io/badge/python-3.11%2B-blue?style=flat)](https://github.com/gopalparashar421/pandas_ta)
+[![Python Version](https://img.shields.io/badge/python-3.11--3.14-blue?style=flat)](https://github.com/gopalparashar421/pandas_ta)
 [![Repository](https://img.shields.io/badge/repository-gopalparashar421%2Fpandas__ta-blue?style=flat)](https://github.com/gopalparashar421/pandas_ta)
 [![Stars](https://img.shields.io/github/stars/gopalparashar421/pandas_ta?style=flat)](#stars)
 [![Forks](https://img.shields.io/github/forks/gopalparashar421/pandas_ta?style=flat)](#forks)
@@ -117,6 +117,8 @@ If you are not using ```uv```, install directly from this fork with ```pip```.
 ```sh
 pip install git+https://github.com/gopalparashar421/pandas_ta.git
 ```
+
+This package now declares only its direct runtime dependencies so modern resolvers such as ```pip``` and ```uv``` can select current compatible releases of ```pandas```, ```numpy```, ```numba```, and related packages.
 
 <br/>
 

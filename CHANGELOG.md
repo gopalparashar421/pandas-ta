@@ -9,6 +9,8 @@ The format is based on Keep a Changelog, and project releases should follow sema
 ### Added
 
 ### Changed
+- Relaxed runtime dependency metadata to direct dependencies with compatible version ranges so pip and uv can resolve current pandas, numpy, numba, and tqdm releases.
+- Updated the repository Python target to 3.14 while keeping published package support at Python 3.11+.
 
 ### Deprecated
 

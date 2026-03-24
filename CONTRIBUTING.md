@@ -7,7 +7,7 @@ This project is packaged from Git, built with setuptools, and installed with uv-
 ## Getting Started
 
 1. Fork the repository and create a feature branch from `main`.
-2. Use Python 3.11 or newer.
+2. Use Python 3.14 for local development. The published package metadata supports Python 3.11 and newer.
 3. Create a local environment and install the project dependencies.
 
 ```sh
