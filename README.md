@@ -177,6 +177,8 @@ help(ta.bbands)
 Thanks for using **Pandas TA**!
 <br/>
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, pull request expectations, changelog updates, and versioning rules.
+
 * ### [Comments and Feedback](https://github.com/gopalparashar421/pandas_ta/issues)
     * Have you read **_this_** document?
     * Are you running the latest version?
