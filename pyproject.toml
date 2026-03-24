@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pandas-ta"
+version = "5.0"
+dependencies = [
+    "numpy==2.2.1",
+    "pandas==2.2.3",
+    "python-dateutil==2.9.0.post0",
+    "pytz==2024.2",
+    "six==1.17.0",
+    "tzdata==2024.2"
+]
+requires-python = ">= 3.11"
+
+description = "Technical Analysis Indicators - Pandas TA is an easy to use Python 3 Pandas Extension with 150+ Indicators"
+readme = "README.md"
+license = "MIT"
+
+
+[project.urls]
+Homepage = "https://github.com/gopalparashar421/pandas_ta"
+Repository = "https://github.com/gopalparashar421/pandas_ta"
+Issues = "https://github.com/gopalparashar421/pandas_ta/issues"
+
+[tool.setuptools]
+include-package-data = true
+license-files = ["LICENSE.txt"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pandas_ta*"]
+
+[tool.setuptools.package-data]
+pandas_ta = ["py.typed"]
