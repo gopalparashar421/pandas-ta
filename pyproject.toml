@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "pandas-ta"
 version = "5.0"
 dependencies = [
+    "numba",
     "numpy==2.2.1",
     "pandas==2.2.3",
     "python-dateutil==2.9.0.post0",

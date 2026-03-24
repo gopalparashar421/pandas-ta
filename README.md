@@ -24,7 +24,7 @@ _Pandas Technical Analysis_ (**Pandas TA**) is an easy to use library that lever
 <!--ts-->
 * [Features](#features)
 * [Installation](#installation)
-    * [uv add --git](#uv-add---git)
+    * [uv add from Git](#uv-add-from-git)
     * [pip from Git](#pip-from-git)
 * [Quick Start](#quick-start)
 * [Help](#help)
@@ -94,20 +94,20 @@ This fork lives at ```https://github.com/gopalparashar421/pandas_ta```.
 **Installation**
 ===================
 
-uv add --git
-------------
+uv add from Git
+---------------
 Recommended when you want to consume this fork directly from Git with ```uv```.
 
 ```sh
-uv add --git https://github.com/gopalparashar421/pandas_ta.git
+uv add "pandas-ta @ git+https://github.com/gopalparashar421/pandas_ta.git"
 ```
 
 To pin a specific revision:
 
 ```sh
-uv add --git https://github.com/gopalparashar421/pandas_ta.git@main
-uv add --git https://github.com/gopalparashar421/pandas_ta.git@<tag>
-uv add --git https://github.com/gopalparashar421/pandas_ta.git@<commit>
+uv add "pandas-ta @ git+https://github.com/gopalparashar421/pandas_ta.git@main"
+uv add "pandas-ta @ git+https://github.com/gopalparashar421/pandas_ta.git@<tag>"
+uv add "pandas-ta @ git+https://github.com/gopalparashar421/pandas_ta.git@<commit>"
 ```
 
 pip from Git
@@ -180,7 +180,7 @@ Thanks for using **Pandas TA**!
 * ### [Comments and Feedback](https://github.com/gopalparashar421/pandas_ta/issues)
     * Have you read **_this_** document?
     * Are you running the latest version?
-        * ```uv add --git https://github.com/gopalparashar421/pandas_ta.git```
+        * ```uv add "pandas-ta @ git+https://github.com/gopalparashar421/pandas_ta.git"```
     * Have you tried the [Examples](https://github.com/gopalparashar421/pandas_ta/tree/main/examples/)?
         * Did they help?
         * What is missing?
