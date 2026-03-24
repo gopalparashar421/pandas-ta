@@ -15,6 +15,7 @@ The format is based on Keep a Changelog, and project releases should follow sema
 ### Removed
 
 ### Fixed
+- Added a module-level `pandas_ta.__version__` attribute sourced from installed package metadata.
 
 ### Security
 

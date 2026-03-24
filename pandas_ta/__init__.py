@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from importlib.metadata import PackageNotFoundError, version
+
 from pandas_ta.maps import EXCHANGE_TZ, RATE, Category, Imports
 from pandas_ta.utils import *
 from pandas_ta.utils import __all__ as utils_all
@@ -23,6 +25,11 @@ from pandas_ta.trend import __all__ as trend_all
 from pandas_ta.volatility import __all__ as volatility_all
 from pandas_ta.volume import __all__ as volume_all
 
+try:
+    __version__ = version("pandas-ta")
+except PackageNotFoundError:
+    __version__ = "unknown"
+
 # Common Averages useful for Indicators
 # with a mamode argument, like ta.adx()
 from pandas_ta.ma import ma
@@ -35,6 +42,7 @@ from pandas_ta.core import AnalysisIndicators
 
 __all__ = [
     # "name",
+    "__version__",
     "EXCHANGE_TZ",
     "RATE",
     "Category",
