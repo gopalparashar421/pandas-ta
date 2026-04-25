@@ -45,7 +45,7 @@ Category: Dict[str, ListStr] = {
     ],
     "volatility": [
         "aberration", "accbands", "atr", "atrts", "bbands", "chandelier_exit",
-        "donchian", "ewma_vol", "hwc", "kc", "massi", "natr", "pdist", "rvi",
+        "donchian", "ewma_vol", "garman_klass", "hwc", "kc", "massi", "natr", "pdist", "rvi",
         "thermo", "true_range", "ui"
     ],
     # Note: "vp" or "Volume Profile" is excluded since it does not

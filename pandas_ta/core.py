@@ -1648,6 +1648,15 @@ class AnalysisIndicators(object):
         result = donchian(high=high, low=low, lower_length=lower_length, upper_length=upper_length, offset=offset, **kwargs)
         return self._post_process(result, **kwargs)
 
+    def garman_klass(self, co_factor=None, offset=None, **kwargs):
+        open_ = self._get_column(kwargs.pop("open", "open"))
+        high = self._get_column(kwargs.pop("high", "high"))
+        low = self._get_column(kwargs.pop("low", "low"))
+        close = self._get_column(kwargs.pop("close", "close"))
+        from pandas_ta.volatility import garman_klass
+        result = garman_klass(open_=open_, high=high, low=low, close=close, co_factor=co_factor, offset=offset, **kwargs)
+        return self._post_process(result, **kwargs)
+
     def hwc(self, na=None, nb=None, nc=None, nd=None, scalar=None, offset=None, **kwargs):
         close = self._get_column(kwargs.pop("close", "close"))
         result = hwc(close=close, na=na, nb=nb, nc=nc, nd=nd, scalar=scalar, offset=offset, **kwargs)
