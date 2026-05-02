@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from .adaptive_adx import adaptive_adx
 from .adx import adx
 from .alphatrend import alphatrend
 from .amat import amat
@@ -24,6 +25,7 @@ from .xsignals import xsignals
 from .zigzag import zigzag
 
 __all__ = [
+    "adaptive_adx",
     "adx",
     "alphatrend",
     "amat",
