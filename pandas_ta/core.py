@@ -11,40 +11,7 @@ from pandas import DataFrame, Series
 from pandas import options as pd_options
 from tqdm import tqdm
 
-from typing import (
-    List,
-    TextIO,
-    Tuple
-)
-
-from pandas_ta._typing import (
-    DictLike,
-    Int,
-    IntFloat,
-    MaybeSeriesFrame,
-    PandasDTypeLike,
-    SeriesFrame,
-    ListStr, Study,
-)
-
-from pandas_ta import (
-    Category,
-    Args,
-    Array,
-    Imports,
-    version,
-    get_time,
-    to_utc,
-    v_str,
-    v_dataframe,
-    v_datetime_ordered,
-    v_pos_default,
-    v_scalar,
-    v_bool,
-    total_time,
-    final_time,
-    EXCHANGE_TZ
-)
+from pandas_ta._typing import * # noqa: F403
 from pandas_ta import *  # noqa: F403
 # Recommended moving forward to Pandas 3
 pd_options.mode.copy_on_write = True
