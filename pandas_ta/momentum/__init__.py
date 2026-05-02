@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from .adaptive_rsi import adaptive_rsi
 from .ao import ao
 from .apo import apo
 from .bias import bias
@@ -50,6 +51,7 @@ from .willr import willr
 
 
 __all__ = [
+    "adaptive_rsi",
     "ao",
     "apo",
     "bias",
