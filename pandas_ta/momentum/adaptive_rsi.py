@@ -23,36 +23,78 @@ def _adaptive_ma_numba(
 
     result[:] = np.nan
 
-    init = 0.0
+    # ---------------------------------
+    # Find valid initialization window
+    # ---------------------------------
+    init_sum = 0.0
+    init_count = 0
 
     for i in range(length):
-        init += source[i]
 
-    result[length - 1] = init / length
+        val = source[i]
 
+        if not np.isnan(val):
+
+            init_sum += val
+            init_count += 1
+
+    if init_count == 0:
+        return result
+
+    result[length - 1] = (
+        init_sum / init_count
+    )
+
+    # ---------------------------------
+    # Recursive adaptive EMA
+    # ---------------------------------
     for i in range(length, n):
 
         alpha = sc[i]
 
+        if np.isnan(alpha):
+            alpha = sc[i - 1]
+
+        if np.isnan(alpha):
+            alpha = 0.0
+
         prev = result[i - 1]
 
-        result[i] = (
-            prev
-            + alpha * (source[i] - prev)
-        )
+        x = source[i]
+
+        # Handle source NaNs
+        if np.isnan(x):
+
+            result[i] = prev
+
+        else:
+
+            result[i] = (
+                prev
+                + alpha * (x - prev)
+            )
 
     return result
 
+
 def _adaptive_ma(source, sc, length=1):
 
+    source_np = source.to_numpy(np.float64)
+
+    # IMPORTANT FIX
+    sc_np = (
+        sc.bfill()
+        .fillna(0.0)
+        .to_numpy(np.float64)
+    )
+
     result = _adaptive_ma_numba(
-        source.to_numpy(np.float64),
-        sc.to_numpy(np.float64),
+        source_np,
+        sc_np,
         length
     )
 
     return Series(result, index=source.index)
-
 
 def adaptive_rsi(
     close,
