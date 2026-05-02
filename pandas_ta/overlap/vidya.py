@@ -59,7 +59,7 @@ def vidya(
     alpha = 2 / (length + 1)
 
     if Imports["talib"] and mode_tal:
-        from talib import CMO
+        from talib import CMO # type: ignore
         cmo_ = 0.01 * CMO(close, length)
     else:
         cmo_ = _cmo(close, length, drift)

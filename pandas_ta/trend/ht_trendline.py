@@ -121,7 +121,7 @@ def ht_trendline(
     offset = v_offset(offset)
 
     if Imports["talib"] and mode_tal:
-        from talib import HT_TRENDLINE
+        from talib import HT_TRENDLINE # type: ignore
         tl = HT_TRENDLINE(close)
     else:
         np_close = close.to_numpy()
@@ -136,13 +136,13 @@ def ht_trendline(
 
     # Offset
     if offset != 0:
-        trend_line = tl.shift(offset)
+        tl.shift(offset)
 
     # Fill
     if "fillna" in kwargs:
         tl.fillna(kwargs["fillna"], inplace=True)
 
-    tl.name = f"HT_TL"
+    tl.name = "HT_TL"
     tl.category = "trend"
 
     return tl

@@ -55,7 +55,7 @@ def trima(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import TRIMA
+        from talib import TRIMA # type: ignore
         trima = TRIMA(close, length)
     else:
         half_length = round(0.5 * (length + 1))

@@ -51,7 +51,7 @@ def bop(
 
     # Calculate
     if Imports["talib"] and mode_tal and close.size:
-        from talib import BOP
+        from talib import BOP # type: ignore
         bop = BOP(open_, high, low, close)
     else:
         high_low_range = non_zero_range(high, low)
@@ -67,7 +67,7 @@ def bop(
         bop.fillna(kwargs["fillna"], inplace=True)
 
     # Name and Category
-    bop.name = f"BOP"
+    bop.name = "BOP"
     bop.category = "momentum"
 
     return bop

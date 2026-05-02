@@ -72,7 +72,7 @@ def wma(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import WMA
+        from talib import WMA # type: ignore
         wma = WMA(close, length)
     else:
         np_close = close.to_numpy()

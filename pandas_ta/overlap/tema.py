@@ -50,7 +50,7 @@ def tema(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import TEMA
+        from talib import TEMA # type: ignore
         tema = TEMA(close, length)
     else:
         ema1 = ema(close=close, length=length, talib=mode_tal, **kwargs)

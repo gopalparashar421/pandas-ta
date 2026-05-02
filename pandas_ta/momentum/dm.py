@@ -57,7 +57,7 @@ def dm(
     offset = v_offset(offset)
 
     if Imports["talib"] and mode_tal and high.size and low.size:
-        from talib import MINUS_DM, PLUS_DM
+        from talib import MINUS_DM, PLUS_DM # type: ignore
         pos = PLUS_DM(high, low, length)
         neg = MINUS_DM(high, low, length)
     else:

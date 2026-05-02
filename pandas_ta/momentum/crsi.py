@@ -72,7 +72,7 @@ def crsi(
     streak = Series(consecutive_streak(np_close), index=close.index)
 
     if Imports["talib"] and mode_tal:
-        from talib import RSI
+        from talib import RSI # type: ignore
         _rsi = RSI(close, rsi_length)
         _streak_rsi = RSI(streak, streak_length)
     else:

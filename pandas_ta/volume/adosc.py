@@ -65,7 +65,7 @@ def adosc(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import ADOSC
+        from talib import ADOSC # type: ignore
         adosc = ADOSC(high, low, close, volume, fast, slow)
     else:
         # remove length so it doesn't override ema length

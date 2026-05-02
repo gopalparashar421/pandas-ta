@@ -39,7 +39,7 @@ def hlc3(
 
     # Calculate
     if Imports["talib"] and mode_tal and close.size:
-        from talib import TYPPRICE
+        from talib import TYPPRICE # type: ignore
         hlc3 = TYPPRICE(high, low, close)
     else:
         avg = (high.to_numpy() + low.to_numpy() + close.to_numpy()) / 3.0

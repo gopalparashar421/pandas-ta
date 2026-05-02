@@ -65,7 +65,7 @@ def true_range(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import TRANGE
+        from talib import TRANGE # type: ignore
         true_range = TRANGE(high, low, close)
     else:
         hl_range = non_zero_range(high, low)

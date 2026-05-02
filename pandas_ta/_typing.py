@@ -5,9 +5,7 @@ from typing import (
     Dict,
     Iterable,
     List,
-    Optional,
     Sequence,
-    TextIO,
     Tuple,
     TypeVar,
     Union
@@ -35,7 +33,7 @@ IntFloat = Union[Int, Float]
 
 # Basic sequences
 MaybeTuple = Union[T, Tuple[T, ...]]
-MaybeList = Union[T | List[T]]
+MaybeList = Union[T, List[T]]
 TupleList = Union[List[T], Tuple[T, ...]]
 MaybeTupleList = Union[T, List[T], Tuple[T, ...]]
 MaybeIterable = Union[T, Iterable[T]]

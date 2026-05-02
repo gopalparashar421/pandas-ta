@@ -54,7 +54,7 @@ def mom(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import MOM
+        from talib import MOM # type: ignore
         mom = MOM(close, length)
     else:
         np_close = close.to_numpy()

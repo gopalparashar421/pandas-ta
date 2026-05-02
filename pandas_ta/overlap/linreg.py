@@ -77,7 +77,7 @@ def linreg(
     np_close = close.to_numpy()
 
     if Imports["talib"] and mode_tal and not r:
-        from talib import LINEARREG, LINEARREG_ANGLE, LINEARREG_INTERCEPT, LINEARREG_SLOPE, TSF
+        from talib import LINEARREG, LINEARREG_ANGLE, LINEARREG_INTERCEPT, LINEARREG_SLOPE, TSF # type: ignore
         if tsf:
             linreg = TSF(close, timeperiod=length)
         elif slope:
@@ -148,7 +148,7 @@ def linreg(
         linreg.fillna(kwargs["fillna"], inplace=True)
 
     # Name and Category
-    linreg.name = f"LINREG"
+    linreg.name = "LINREG"
     if slope:
         linreg.name += "m"
     if intercept:

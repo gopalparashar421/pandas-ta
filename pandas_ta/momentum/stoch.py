@@ -65,7 +65,7 @@ def stoch(
 
     # Calculate
     if Imports["talib"] and mode_tal and smooth_k > 2:
-        from talib import STOCH
+        from talib import STOCH # type: ignore
         stoch_ = STOCH(
             high, low, close, k, d, tal_ma(mamode), d, tal_ma(mamode)
         )
@@ -76,7 +76,8 @@ def stoch(
 
         stoch = 100 * (close - ll) / non_zero_range(hh, ll)
 
-        if stoch is None: return
+        if stoch is None:
+            return
 
         stoch_fvi = stoch.loc[stoch.first_valid_index():, ]
         if smooth_k == 1:

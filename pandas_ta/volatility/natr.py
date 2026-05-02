@@ -72,7 +72,7 @@ def natr(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import NATR
+        from talib import NATR # type: ignore
         natr = NATR(high, low, close, length)
     else:
         natr = (scalar / close) * \

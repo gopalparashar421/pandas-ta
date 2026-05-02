@@ -52,7 +52,7 @@ def willr(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import WILLR
+        from talib import WILLR # type: ignore
         willr = WILLR(high, low, close, length)
     else:
         lowest_low = low.rolling(length, min_periods=min_periods).min()

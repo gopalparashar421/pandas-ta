@@ -65,7 +65,7 @@ def rsi(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import RSI
+        from talib import RSI # type: ignore
         rsi = RSI(close, length)
     else:
         negative = close.diff(drift)

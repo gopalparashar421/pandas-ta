@@ -59,7 +59,7 @@ def macd(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import MACD
+        from talib import MACD # type: ignore
         macd, signalma, histogram = MACD(close, fast, slow, signal)
     else:
         fastma = ema(close, length=fast, talib=mode_tal)

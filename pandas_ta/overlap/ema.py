@@ -55,7 +55,7 @@ def ema(
 
     # Calculate
     if Imports["talib"] and mode_tal and length > 1:
-        from talib import EMA
+        from talib import EMA # type: ignore
         ema = EMA(close, length)
     else:
         if presma:  # TA Lib implementation

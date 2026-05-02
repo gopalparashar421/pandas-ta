@@ -68,7 +68,7 @@ def atr(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import ATR
+        from talib import ATR # type: ignore
         atr = ATR(high, low, close, length)
     else:
         tr = true_range(

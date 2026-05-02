@@ -60,7 +60,7 @@ def roc(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import ROC
+        from talib import ROC # type: ignore
         roc = ROC(close, length)
     else:
         # roc = scalar * mom(close=close, length=length, talib=mode_tal) \

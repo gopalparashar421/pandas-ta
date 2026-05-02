@@ -67,7 +67,7 @@ def uo(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import ULTOSC
+        from talib import ULTOSC # type: ignore
         uo = ULTOSC(high, low, close, fast, medium, slow)
     else:
         close_drift = close.shift(drift)

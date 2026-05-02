@@ -69,7 +69,7 @@ def bbands(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import BBANDS
+        from talib import BBANDS # type: ignore
         upper, mid, lower = BBANDS(close, length, upper_std, lower_std, tal_ma(mamode))
     else:
         std_dev = stdev(close=close, length=length, ddof=ddof, talib=mode_tal)

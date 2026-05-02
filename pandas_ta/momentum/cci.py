@@ -51,7 +51,7 @@ def cci(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import CCI
+        from talib import CCI # type: ignore
         cci = CCI(high, low, close, length)
     else:
         typical_price = hlc3(high=high, low=low, close=close, talib=mode_tal)

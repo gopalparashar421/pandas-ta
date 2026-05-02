@@ -42,7 +42,7 @@ def midpoint(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import MIDPOINT
+        from talib import MIDPOINT # type: ignore
         midpoint = MIDPOINT(close, length)
     else:
         lowest = close.rolling(length, min_periods=min_periods).min()

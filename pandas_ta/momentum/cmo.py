@@ -59,7 +59,7 @@ def cmo(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import CMO
+        from talib import CMO # type: ignore
         cmo = CMO(close, length)
     else:
         mom = close.diff(drift)

@@ -50,7 +50,7 @@ def dema(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import DEMA
+        from talib import DEMA # type: ignore
         dema = DEMA(close, length)
     else:
         ema1 = ema(close=close, length=length, talib=mode_tal)

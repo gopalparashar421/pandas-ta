@@ -53,7 +53,7 @@ def t3(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import T3
+        from talib import T3 # type: ignore
         t3 = T3(close, length, a)
     else:
         c1 = -a * a**2

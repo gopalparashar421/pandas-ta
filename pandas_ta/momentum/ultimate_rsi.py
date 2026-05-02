@@ -27,7 +27,8 @@ def ultimate_rsi(close, length=14, ma_type1="wma", offset=0, **kwargs):
     # Validate and clean inputs
     close = verify_series(close, length)
     offset = get_offset(offset)
-    if close is None: return
+    if close is None:
+        return
 
     # Step 1: Highest and Lowest over the period
     highest = close.rolling(length).max()

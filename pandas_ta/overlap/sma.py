@@ -63,7 +63,7 @@ def sma(
 
     # Calculate
     if Imports["talib"] and mode_tal and length > 1:
-        from talib import SMA
+        from talib import SMA # type: ignore
         sma = SMA(close, length)
     else:
         np_close = close.to_numpy()

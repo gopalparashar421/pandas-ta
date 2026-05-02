@@ -101,7 +101,7 @@ def adx(
     neg = neg.apply(zero)
 
     if not mode_tv and Imports["talib"] and mode_tal and length > 1:
-        from talib import ADX, MINUS_DM, PLUS_DM
+        from talib import ADX, MINUS_DM, PLUS_DM # type: ignore
         adx = ADX(high, low, close, length)
         dmp = PLUS_DM(high, low, length)
         dmn = MINUS_DM(high, low, length)

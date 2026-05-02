@@ -50,7 +50,7 @@ def variance(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import VAR
+        from talib import VAR # type: ignore
         variance = VAR(close, length)
     else:
         variance = close.rolling(length, min_periods=min_periods).var(ddof)

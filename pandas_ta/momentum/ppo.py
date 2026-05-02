@@ -63,7 +63,7 @@ def ppo(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import PPO
+        from talib import PPO # type: ignore
         ppo = PPO(close, fast, slow, tal_ma(mamode))
     else:
         fastma = ma(mamode, close, length=fast, talib=mode_tal)

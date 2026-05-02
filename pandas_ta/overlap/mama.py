@@ -140,7 +140,7 @@ def mama(
     # Calculate
     np_close = close.to_numpy()
     if Imports["talib"] and mode_tal:
-        from talib import MAMA
+        from talib import MAMA # type: ignore
         mama, fama = MAMA(np_close, fastlimit, slowlimit)
     else:
         mama, fama = nb_mama(np_close, fastlimit, slowlimit, prenan)

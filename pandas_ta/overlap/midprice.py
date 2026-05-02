@@ -45,7 +45,7 @@ def midprice(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import MIDPRICE
+        from talib import MIDPRICE # type: ignore
         midprice = MIDPRICE(high, low, length)
     else:
         lowest_low = low.rolling(length, min_periods=min_periods).min()

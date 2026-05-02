@@ -55,7 +55,7 @@ def aroon(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import AROON, AROONOSC
+        from talib import AROON, AROONOSC # type: ignore
         aroon_down, aroon_up = AROON(high, low, length)
         aroon_osc = AROONOSC(high, low, length)
     else:

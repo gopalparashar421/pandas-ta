@@ -44,7 +44,7 @@ def obv(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import OBV
+        from talib import OBV # type: ignore
         obv = OBV(close, volume)
     else:
         sv = signed_series(close, initial=1) * volume
@@ -59,7 +59,7 @@ def obv(
         obv.fillna(kwargs["fillna"], inplace=True)
 
     # Name and Category
-    obv.name = f"OBV"
+    obv.name = "OBV"
     obv.category = "volume"
 
     return obv

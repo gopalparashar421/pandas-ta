@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from pathlib import Path
 import re as re_
 from contextlib import redirect_stdout
 from io import StringIO
@@ -9,7 +10,6 @@ from numpy import argmax, argmin
 from pandas import DataFrame, Series
 
 from pandas_ta._typing import (
-    Array,
     Int,
     IntFloat,
     ListStr,
@@ -17,14 +17,11 @@ from pandas_ta._typing import (
     Tuple
 )
 from pandas_ta.utils._validate import (
-    v_array,
     v_bool,
-    v_dataframe,
     v_pos_default,
     v_series,
     v_str
 )
-from pandas_ta.utils._study import Study
 from pandas_ta.maps import Category, Imports
 
 __all__ = [
@@ -302,7 +299,7 @@ def speed_test(df: DataFrame,
         (DataFrame, DataFrame): if ```stats=True```
     """
     if df.empty:
-        print(f"[X] No DataFrame")
+        print("[X] No DataFrame")
         return
     talib = v_bool(talib, False)
     top = int(top) if isinstance(top, int) and top > 0 else None
@@ -318,7 +315,8 @@ def speed_test(df: DataFrame,
     else:
         _indicators = df.ta.indicators(as_list=True, exclude=_ichimoku)
 
-    if len(_indicators) == 0: return None
+    if len(_indicators) == 0:
+        return None
 
     _iname = "Indicator"
     if verbose:
@@ -373,7 +371,7 @@ def tal_ma(name: str) -> Int:
         (int): The equivalent TA Lib MA Enum value for ```name```
     """
     if Imports["talib"] and isinstance(name, str) and len(name) > 1:
-        from talib import MA_Type
+        from talib import MA_Type # type: ignore
         name = name.lower()
         if name == "sma":
             return MA_Type.SMA   # 0

@@ -54,7 +54,7 @@ def apo(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import APO
+        from talib import APO # type: ignore
         apo = APO(close, fast, slow, tal_ma(mamode))
     else:
         fastma = ma(mamode, close, length=fast, talib=mode_tal)

@@ -48,7 +48,7 @@ def stdev(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import STDDEV
+        from talib import STDDEV # type: ignore
         stdev = STDDEV(close, length)
     else:
         stdev = variance(

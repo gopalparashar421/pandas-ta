@@ -44,7 +44,7 @@ def wcp(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import WCLPRICE
+        from talib import WCLPRICE # type: ignore
         wcp = WCLPRICE(high, low, close)
     else:
         weight = high.to_numpy() + low.to_numpy() + 2 * close.to_numpy()

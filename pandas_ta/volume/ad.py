@@ -44,7 +44,7 @@ def ad(
 
     # Calculate
     if Imports["talib"] and mode_tal and volume.size:
-        from talib import AD
+        from talib import AD # type: ignore
         ad = AD(high, low, close, volume)
     else:
         if open_ is not None:

@@ -63,7 +63,7 @@ def stochf(
 
     # Calculate
     if Imports["talib"] and mode_tal:
-        from talib import STOCHF
+        from talib import STOCHF # type: ignore
         stochf_ = STOCHF(high, low, close, k, d, tal_ma(mamode))
         stochf_k, stochf_d = stochf_[0], stochf_[1]
     else:

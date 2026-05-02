@@ -78,7 +78,7 @@ def cdl_pattern(
         name = [name]
 
     if Imports["talib"]:
-        import talib.abstract as tala
+        import talib.abstract as tala # type: ignore
 
     result = {}
     for n in name:

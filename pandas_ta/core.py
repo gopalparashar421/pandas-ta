@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from dataclasses import dataclass
 from multiprocessing import cpu_count, Pool
-from pathlib import Path
 from time import perf_counter
 from warnings import simplefilter
 
@@ -12,8 +11,40 @@ from pandas import DataFrame, Series
 from pandas import options as pd_options
 from tqdm import tqdm
 
-from pandas_ta._typing import *
-from pandas_ta import *
+from typing import (
+    List,
+    TextIO,
+    Tuple
+)
+
+from pandas_ta._typing import (
+    DictLike,
+    Int,
+    IntFloat,
+    MaybeSeriesFrame,
+    PandasDTypeLike,
+    SeriesFrame,
+    ListStr, Study,
+)
+
+from pandas_ta import (
+    Category,
+    Args,
+    Array,
+    Imports,
+    version,
+    get_time,
+    to_utc,
+    v_str,
+    v_dataframe,
+    v_datetime_ordered,
+    v_pos_default,
+    v_scalar,
+    v_bool,
+    total_time,
+    final_time,
+    EXCHANGE_TZ
+)
 
 # Recommended moving forward to Pandas 3
 pd_options.mode.copy_on_write = True
@@ -227,7 +258,8 @@ class AnalysisIndicators(object):
         result: MaybeSeriesFrame = None, **kwargs: DictLike
     ) -> MaybeSeriesFrame:
         """Appends a Pandas Series or DataFrame columns to self._df."""
-        if result is None: return
+        if result is None:
+            return
 
         if "col_names" in kwargs and not isinstance(kwargs["col_names"], tuple):
             # Note: tuple(kwargs["col_names"]) doesn't work
@@ -266,7 +298,8 @@ class AnalysisIndicators(object):
     def _get_column(self, series: Series | str | None):
         """Attempts to get the correct series or 'column' and return it."""
         df = self._df
-        if df is None: return
+        if df is None:
+            return
 
         # Explicitly passing a Series to override default.
         if isinstance(series, Series):
@@ -288,8 +321,10 @@ class AnalysisIndicators(object):
                 NOT_FOUND = f"[X] The '{series}' column was not found in"
                 cols = ", ".join(list(df.columns))
 
-                if len(df.columns): NOT_FOUND += f": {cols}"
-                else:               NOT_FOUND += " the DataFrame"
+                if len(df.columns):
+                    NOT_FOUND += f": {cols}"
+                else:
+                    NOT_FOUND += " the DataFrame"
 
                 if len(match):
                     return df.iloc[:, match[0]]
@@ -323,7 +358,7 @@ class AnalysisIndicators(object):
         verbose = kwargs.pop("verbose", False)
         if not isinstance(result, (Series, DataFrame)):
             if verbose:
-                print(f"[X] The result is not a Series or DataFrame.")
+                print("[X] The result is not a Series or DataFrame.")
             return self._df
         else:
             # Append only specific columns to the dataframe (via
@@ -648,7 +683,7 @@ class AnalysisIndicators(object):
         elif mode["all"]:
             ta = self.indicators(as_list=True, exclude=excluded)
         else:
-            print(f"[X] Study not available.")
+            print("[X] Study not available.")
             return None
 
         verbose = kwargs.pop("verbose", False)
@@ -675,7 +710,7 @@ class AnalysisIndicators(object):
 
             if has_col_names:
                 use_multiprocessing = False
-                print(f"[i] Multiprocessing is disabled (cores=0) when using custom \"col_names\".")
+                print("[i] Multiprocessing is disabled (cores=0) when using custom \"col_names\".")
 
         if use_multiprocessing:
             _total_ta = len(ta)
@@ -730,14 +765,14 @@ class AnalysisIndicators(object):
         else:
             # Without multiprocessing:
             if verbose:
-                _col_msg = f"[i] No multiprocessing. (cores = 0)"
+                _col_msg = "[i] No multiprocessing. (cores = 0)"
                 if has_col_names:
-                    _col_msg = f"[i] No multiprocessing support with the 'col_names' keyword."
+                    _col_msg = "[i] No multiprocessing support with the 'col_names' keyword."
                 print(_col_msg)
 
             if mode["custom"]:
                 if verbose:
-                    pbar = tqdm(ta, f"[i] Progress")
+                    pbar = tqdm(ta, "[i] Progress")
                     for ind in pbar:
                         params = ind["params"] if "params" in ind and isinstance(ind["params"], tuple) else tuple()
                         getattr(self, ind["kind"])(*params, **{**ind, **kwargs})
@@ -747,7 +782,7 @@ class AnalysisIndicators(object):
                         getattr(self, ind["kind"])(*params, **{**ind, **kwargs})
             else:
                 if verbose:
-                    pbar = tqdm(ta, f"[i] Progress")
+                    pbar = tqdm(ta, "[i] Progress")
                     for ind in pbar:
                         getattr(self, ind)(*tuple(), **kwargs)
                 else:
@@ -818,7 +853,7 @@ class AnalysisIndicators(object):
             ```
         """
         if self._ds is None:
-            print(f"[X] Please install yfinance to use this method. (pip install yfinance)")
+            print("[X] Please install yfinance to use this method. (pip install yfinance)")
             return
 
         ticker = v_str(ticker, "SPY")
@@ -829,10 +864,11 @@ class AnalysisIndicators(object):
 
         df, stime = None, None
         if self._ds == "yf" and ticker is not None:
-            import yfinance as yf
+            import yfinance as yf # type: ignore
             yft = yf.Ticker(ticker)
 
-            if timed: stime = perf_counter()
+            if timed:
+                stime = perf_counter()
             df = yft.history(
                 period=period, interval=interval,
                 proxy=proxy, **kwargs
