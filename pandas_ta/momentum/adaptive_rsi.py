@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import numpy as np
+from numba import njit
 from pandas import Series
 from pandas_ta.utils import (
     verify_series,
@@ -8,39 +10,49 @@ import numpy as np
 
 from pandas_ta.utils._core import non_zero_range
 
-def _adaptive_ma(
-    source: Series,
-    sc: Series,
-    length: int
-) -> Series:
-    """
-    Adaptive EMA using dynamic smoothing constant
-    """
+@njit
+def _adaptive_ma_numba(
+    source,
+    sc,
+    length
+):
 
-    result = source.copy().astype(float)
+    n = len(source)
 
-    if len(result) == 0:
-        return result
+    result = np.empty(n)
 
-    result.iloc[:length - 1] = np.nan
+    result[:] = np.nan
 
-    # initialize
-    result.iloc[length - 1] = (
-        source.iloc[:length].mean()
-    )
+    init = 0.0
 
-    for i in range(length, len(source)):
+    for i in range(length):
+        init += source[i]
 
-        prev = result.iloc[i - 1]
+    result[length - 1] = init / length
 
-        alpha = sc.iloc[i]
+    for i in range(length, n):
 
-        result.iloc[i] = (
+        alpha = sc[i]
+
+        prev = result[i - 1]
+
+        result[i] = (
             prev
-            + alpha * (source.iloc[i] - prev)
+            + alpha * (source[i] - prev)
         )
 
     return result
+
+def _adaptive_ma(source, sc, length=1):
+
+    result = _adaptive_ma_numba(
+        source.to_numpy(np.float64),
+        sc.to_numpy(np.float64),
+        length
+    )
+
+    return Series(result, index=source.index)
+
 
 def adaptive_rsi(
     close,
