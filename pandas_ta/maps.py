@@ -18,7 +18,7 @@ Category: Dict[str, ListStr] = {
     ],
     "cycle": ["ebsw", "reflex"],
     "momentum": [
-        "ao", "apo", "bias", "bop", "brar", "cci", "cfo", "cg", "cmo",
+        "adaptive_rsi", "ao", "apo", "bias", "bop", "brar", "cci", "cfo", "cg", "cmo",
         "coppock", "crsi", "cti", "er", "eri", "exhc", "fisher",
         "inertia", "kdj", "kst", "macd", "mom", "pgo", "ppo", "psl", "qqe",
         "roc", "rsi", "rsx", "rvgi", "slope", "smc", "smi", "squeeze",
@@ -38,7 +38,7 @@ Category: Dict[str, ListStr] = {
         "tos_stdevall", "variance", "zscore"
     ],
     "trend": [
-        "adx", "alphatrend", "amat", "aroon", "chop", "cksp", "decay",
+        "adaptive_adx", "adx", "alphatrend", "amat", "aroon", "chop", "cksp", "decay",
         "decreasing", "dpo", "ht_trendline", "increasing",
         "long_run", "psar", "qstick", "rwi", "short_run", "trendflex",
         "vhf", "vortex", "zigzag"

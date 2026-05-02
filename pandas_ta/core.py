@@ -45,7 +45,7 @@ from pandas_ta import (
     final_time,
     EXCHANGE_TZ
 )
-
+from pandas_ta import *  # noqa: F403
 # Recommended moving forward to Pandas 3
 pd_options.mode.copy_on_write = True
 
@@ -942,6 +942,11 @@ class AnalysisIndicators(object):
         return self._post_process(result, **kwargs)
 
     # Momentum
+    def adaptive_rsi(self, length=None, fast=None, slow=None, **kwargs):
+        close = self._get_column(kwargs.pop("close", "close"))
+        result = adaptive_rsi(close=close, length=length, fast=fast, slow=slow, **kwargs)
+        return self._post_process(result, **kwargs)
+
     def ao(self, fast=None, slow=None, offset=None, **kwargs):
         high = self._get_column(kwargs.pop("high", "high"))
         low = self._get_column(kwargs.pop("low", "low"))
@@ -1490,6 +1495,13 @@ class AnalysisIndicators(object):
         return self._post_process(result, **kwargs)
 
     # Trend
+    def adaptive_adx(self, length=None, fast=None, slow=None, **kwargs):
+        high = self._get_column(kwargs.pop("high", "high"))
+        low = self._get_column(kwargs.pop("low", "low"))
+        close = self._get_column(kwargs.pop("close", "close"))
+        result = adaptive_adx(high=high, low=low, close=close, length=length, fast=fast, slow=slow, **kwargs)
+        return self._post_process(result, **kwargs)
+
     def adx(self, length=None, lensig=None, mamode=None, scalar=None, drift=None, offset=None, **kwargs):
         high = self._get_column(kwargs.pop("high", "high"))
         low = self._get_column(kwargs.pop("low", "low"))
