@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from pandas import Series
 from pandas_ta._typing import DictLike, Int
-from pandas_ta.overlap import sma
+from pandas_ta import ma
 from pandas_ta.utils import v_offset, v_pos_default, v_series
 
 
 
 def vwma(
     close: Series, volume: Series, length: Int = None,
-    offset: Int = None, **kwargs: DictLike
+    mamode: str = "ema", offset: Int = None, **kwargs: DictLike
 ) -> Series:
     """Volume Weighted Moving Average
 
@@ -41,7 +41,7 @@ def vwma(
 
     # Calculate
     pv = close * volume
-    vwma = sma(close=pv, length=length) / sma(close=volume, length=length)
+    vwma = ma(mamode, pv, length=length) / ma(mamode, volume, length=length)
 
     # Offset
     if offset != 0:
