@@ -1410,6 +1410,12 @@ class AnalysisIndicators(object):
         result = percent_return(close=close, length=length, cumulative=cumulative, percent=percent, offset=offset, **kwargs)
         return self._post_process(result, **kwargs)
 
+    def sharpe(self, length=None, risk_free=None, annualize=None, periods=None, offset=None, **kwargs):
+        close = self._get_column(kwargs.pop("close", "close"))
+        from pandas_ta.performance import sharpe
+        result = sharpe(close=close, length=length, risk_free=risk_free, annualize=annualize, periods=periods, offset=offset, **kwargs)
+        return self._post_process(result, **kwargs)
+
     # Statistics
     def entropy(self, length=None, base=None, offset=None, **kwargs):
         close = self._get_column(kwargs.pop("close", "close"))

@@ -32,7 +32,7 @@ Category: Dict[str, ListStr] = {
         "sinwma", "sma", "smma", "ssf", "ssf3", "supertrend", "swma", "t3",
         "tema", "trima", "vidya", "wcp", "wma", "zlma"
     ],
-    "performance": ["log_return", "percent_return"],
+    "performance": ["log_return", "percent_return", "sharpe"],
     "statistics": [
         "entropy", "kurtosis", "mad", "median", "quantile", "skew", "stdev",
         "tos_stdevall", "variance", "zscore"
