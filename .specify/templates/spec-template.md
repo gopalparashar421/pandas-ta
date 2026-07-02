@@ -125,7 +125,17 @@
   chosen when the feature description did not specify certain details.
 -->
 
-- [Assumption about target users, e.g., "Users have stable internet connectivity"]
-- [Assumption about scope boundaries, e.g., "Mobile support is out of scope for v1"]
-- [Assumption about data/environment, e.g., "Existing authentication system will be reused"]
-- [Dependency on existing system/service, e.g., "Requires access to the existing user profile API"]
+- [Assumption about target users, e.g., "Users analyze OHLCV DataFrames in Python 3.11+"]
+- [Assumption about scope boundaries, e.g., "CLI or web UI out of scope; library API only"]
+- [Assumption about data/environment, e.g., "Input DataFrame has lowercase ohlcva columns for df.ta"]
+- [Dependency on existing system/service, e.g., "TA-Lib optional; feature degrades when absent"]
+
+## Constitution Alignment *(mandatory for pandas_ta)*
+
+Verify against `.specify/memory/constitution.md`:
+
+- **API styles**: Which of Standard, DataFrame Extension, and Strategy apply?
+- **Output naming**: Uppercase Underscore column names defined?
+- **Reference parity**: TA-Lib / TradingView / literature source identified?
+- **Data safety**: Lookahead or centering risks documented with defaults?
+- **Versioning**: SemVer impact and CHANGELOG section identified?

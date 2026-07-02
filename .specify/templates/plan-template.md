@@ -40,7 +40,18 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Reference: `.specify/memory/constitution.md`
+
+| Gate | Pass? | Notes |
+|------|-------|-------|
+| API surface (Standard + `df.ta` extension) | [ ] | |
+| Uppercase Underscore output naming | [ ] | |
+| TA-Lib / reference parity documented | [ ] | |
+| Lookahead/leak risks with opt-out | [ ] | |
+| SemVer + CHANGELOG alignment | [ ] | |
+| Reproducible PR verification snippet | [ ] | |
+
+Document any intentional violations in **Complexity Tracking** below.
 
 ## Project Structure
 

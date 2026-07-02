@@ -21,10 +21,12 @@ description: "Task list template for feature implementation"
 
 ## Path Conventions
 
-- **Single project**: `src/`, `tests/` at repository root
+- **pandas_ta (this repo)**: `pandas_ta/` package at repository root; indicators by
+  category subdirectory; `examples/` for notebooks; `CHANGELOG.md` for user-facing
+  changes; validation via `uv run python -c "import pandas_ta"` and `uv build`
+- **Single project (generic)**: `src/`, `tests/` at repository root
 - **Web app**: `backend/src/`, `frontend/src/`
-- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
+- Paths shown below default to `pandas_ta/` for this repository — adjust in plan.md
 
 <!--
   ============================================================================
